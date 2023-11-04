@@ -1,3 +1,3 @@
 export const config = {
-  domain: "https://paperman-backend-api.com",
+  domain: "https://paperman-backend-api.onrender.com",
 };
