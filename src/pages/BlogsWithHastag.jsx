@@ -9,7 +9,7 @@ const BlogsWithHastag = () => {
   const { hastag } = useParams();
   console.log(hastag);
   const { data, loading, error } = UseFetch(
-    `${config.domain}/blog/hastag/${hastag}`
+    `${config.domain}/blog/hashtag/${hastag}`
   );
 
   return (

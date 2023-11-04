@@ -39,22 +39,22 @@ const Home = () => {
           }
         );
         console.log(res.data);
-
+        console.log("heheheheheh");
         if (res.data.success) {
           navigate("/");
-          setAddBlog(true);
+          setAddBlog(false);
         } else {
           navigate("/login");
-          setAddBlog(addBlog);
+          setAddBlog(false);
         }
       } catch (error) {
         console.log(error);
-        setAddBlog(false);
+
+        console.log("hitting...");
         navigate("/login");
+        setAddBlog(false);
       }
     }
-
-    setAddBlog(!addBlog);
   };
   const handleDropDown = () => {
     setDrop(!drop);
