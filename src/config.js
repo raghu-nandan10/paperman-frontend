@@ -1,3 +1,3 @@
 export const config = {
-  domain: "http://localhost:4000",
+  domain: "http://paperman-backend.onrender.com",
 };
