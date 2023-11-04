@@ -1,0 +1,23 @@
+
+.stat{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.stat-name{
+    font-size: 15px;
+    color: rgb(149, 149, 149);
+}
+.stat-count-container{
+    display: flex;
+    align-items: center;
+    
+}
+
+.stats-bar{
+    height: 45px;
+    width: 5px;
+}
+.stats-count{
+    margin-left: 10px;
+}

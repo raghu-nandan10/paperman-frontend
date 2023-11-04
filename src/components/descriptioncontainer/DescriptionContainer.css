@@ -1,0 +1,14 @@
+.editor-wrapper {
+    width: 90%;
+    border: 1px solid black;
+    background: #fff;
+    padding: 1rem;
+    background: #000;
+  }
+  
+  .editor-container {
+    width: 100%;
+    height: fit-content;
+    color: white;
+    padding: 1rem;
+  }

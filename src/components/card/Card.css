@@ -1,0 +1,70 @@
+.card{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    /* bg-gray-800 text-white flex  flex-col   p-2 rounded-xl cursor-pointer group transition-all duration-200 ease-in-out */
+}
+.card-photo{
+    aspect-ratio: 16 / 9;
+    height: 100%;
+    width: 350px;
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 0px;
+    color: white;
+    /* flex flex-col gap-3 p-3 */
+}
+.card-caption{
+    font-size: 18px;
+    color: white;
+    /* color: teal; */
+    /* card-content-top text-teal-400 text-2xl group-hover:text-white truncate font-bold */
+}
+.card-caption:hover{
+    color: white;
+    font-weight: bold;
+}
+
+.card-content-top{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 8px;
+    /* text-base flex gap-2 */
+}
+
+.class1{
+    /* background-color: grey; */
+    border-radius: 50%;
+    /* bg-gray-900 rounded-full  */
+}
+
+.class2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: white;
+    font-size: 15px;
+    /* flex gap-1 */
+}
+
+.class3{
+    padding: 1px 0px;
+    /* py-1 */
+}
+
+.class4{
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    /* flex gap-2 text-sm */
+}

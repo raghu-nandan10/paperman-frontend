@@ -1,0 +1,37 @@
+.reader-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+.code-header {
+  display: flex;
+  background-color: #3a404d;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  color: white;
+  font-size: 12px;
+  width: 100%;
+}
+.code-topic {
+  font-size: 15px;
+}
+.clipboard-button {
+  background-color: transparent;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.clipboard-button span {
+  margin-right: 0.5rem;
+  font-size: 15px;
+}

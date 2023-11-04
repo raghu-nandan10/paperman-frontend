@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .flx {
+    @apply flex justify-center items-center;
+  }
+}
+
+.editor-wrapper {
+  width: 90%;
+  height: fit-content;
+  border: 1px solid black;
+  background: #fff;
+  padding: 1rem;
+  background: #000;
+}
+
+.editor-container {
+  width: 100%;
+  height: fit-content;
+  /* min-height: 300px; */
+  border: 3px line rgb(13 148 136);
+  color: white;
+  padding: 1rem;
+}
+
+.toolbar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 1fr 1fr;
+}
+
+button {
+  margin-right: 8px;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+
+  background: black;
+  cursor: pointer;
+}
+
+.superFancyBlockquote {
+  color: whitesmoke;
+  background: rgb(31 41 55);
+  padding: 10px;
+  font-size: 20px;
+
+  border-left: 3px solid rgb(13 148 136);
+  padding-left: 10px;
+}
+
+.codeBlock {
+  font-family: monospace;
+  font-size: inherit;
+
+  word-wrap: normal;
+  color: white;
+  word-wrap: break-word;
+  box-decoration-break: slice;
+  padding: 0.3rem 2rem;
+  border-radius: 0.2rem;
+}
+
+.leftAlign {
+  text-align: left;
+}
+.rightAlign {
+  text-align: right;
+}
+.centerAlign {
+  text-align: center;
+}
+.justifyAlign {
+  text-align: justify;
+}
+
+.headerOne {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.headerTwo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.headerThree {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.headerFour {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.headerFive {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.headerSix {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.orderedListItem {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 30px;
+}
+
+.orderedListItem::before {
+  content: counter(list-item) ".";
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: rgb(13 148 136);
+}
+
+ol {
+  counter-reset: list-item;
+}
+
+.unorderedListItem {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 30px;
+}
+
+.unorderedListItem::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  color: rgb(13 148 136);
+}
+
+/* DraftEditor.css */
+
+ul {
+  list-style-type: none; /* Remove default bullet points */
+}
