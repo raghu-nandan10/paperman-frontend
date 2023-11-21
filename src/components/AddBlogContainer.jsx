@@ -17,9 +17,11 @@ import axios from "axios";
 import TagSelector from "./TagSelector";
 import { useNavigate } from "react-router-dom";
 import Sugesstion from "./Sugesstion";
+import Loading from "./Loading";
 const AddBlogContainer = ({ setAddBlog, addBlog }) => {
   const navigate = useNavigate();
   const [content, setContent] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [blogObject, setBlogObject] = useState({
     title: "",
     thumbnail: "",
@@ -106,18 +108,8 @@ const AddBlogContainer = ({ setAddBlog, addBlog }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "dark",
     });
-    // toast.success(<div className="text-base">{message}</div>, {
-    //   position: "top-right",
-    //   autoClose: 5000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: "dark",
-    // });
   };
 
   const handleFailedToast = (message) => {
@@ -134,24 +126,7 @@ const AddBlogContainer = ({ setAddBlog, addBlog }) => {
   };
 
   const handleSubmit = async () => {
-    toast.promise(
-      new Promise((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, 100);
-      }),
-      {
-        position: "top-right",
-        pending: "Uploading...",
-        autoClose: 500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      }
-    );
+    setLoading(true);
     try {
       const res = await axios.post(`${config.domain}/blog/save`, blogObject, {
         withCredentials: true,
@@ -162,7 +137,7 @@ const AddBlogContainer = ({ setAddBlog, addBlog }) => {
       if (res.data.success) {
         console.log(res.data);
         handleSuccessToast(res.data.message);
-        navigate("/blog/" + res.data.id);
+        navigate(`/blog/${res.data.id}`);
       } else {
         toast.error(
           <div className=" font-thin text-sm">{res.data.message}</div>,
@@ -180,11 +155,11 @@ const AddBlogContainer = ({ setAddBlog, addBlog }) => {
       }
     } catch (error) {
       console.log(error);
-      handleFailedToast(error.message);
+      handleFailedToast("Couldn't upload your blog..");
     }
+    setLoading(false);
   };
 
-  console.log(blogObject);
   return (
     <div
       className={`bg-black overflow-y-scroll font-customFont    w-full flex justify-center items-center  scrollbar-hide flex-col  text-white fixed  top-0   transition-all duration-200 ease-out ${
@@ -256,15 +231,15 @@ const AddBlogContainer = ({ setAddBlog, addBlog }) => {
             </div>
           )}
         </div>
-        <div className=" flex   transform -translate-y-[50%] rounded-lg  justify-center  items-center gap-5 top-[50%] absolute left-0   flex-col">
-          <div className="flex gap-2 p-2  rounded-lg items-center  justify-center cursor-pointer ">
+        <div className=" flex   transform -translate-y-[50%] rounded-lg  justify-center  items-center gap-5 bottom-0 absolute right-8   flex-col">
+          {/* <div className="flex gap-2 p-2  rounded-lg items-center  justify-center cursor-pointer ">
             <AiFillEye color="gray" size={28} />
-          </div>
+          </div> */}
           <div
             onClick={handleSubmit}
-            className="flex gap-2   p-2 rounded-lg items-center justify-center cursor-pointer "
+            className="flex gap-2 bg-gray-900   p-3 rounded-full items-center justify-center cursor-pointer "
           >
-            <BiSolidCloudUpload size={30} color="lightgreen" />
+            <BiSolidCloudUpload size={40} color="white" />
           </div>
         </div>
         <ToastContainer
@@ -279,6 +254,12 @@ const AddBlogContainer = ({ setAddBlog, addBlog }) => {
           pauseOnHover
           theme="dark"
         />
+        {loading && (
+          <div>
+            <Loading />
+            <div>Uploading...</div>
+          </div>
+        )}
       </div>
     </div>
   );

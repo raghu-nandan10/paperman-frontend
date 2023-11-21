@@ -4,7 +4,6 @@ import Input from "../../components/input/Input";
 import axios from "axios";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-
 import { useContext } from "react";
 import { BlogToggleContext } from "../../App";
 import { ToastContainer, toast } from "react-toastify";
@@ -76,23 +75,8 @@ const Login = () => {
         });
         console.log(res.data);
         if (res.data.success) {
-          toast.success(
-            <div className=" font-thin text-sm">{res.data.message}</div>,
-            {
-              position: "top-right",
-              autoClose: 1500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "dark",
-            }
-          );
-          setTimeout(() => {
-            setAddBlog(true);
-            navigate("/");
-          }, 1000);
+          navigate("/");
+          setAddBlog(true);
         } else {
           toast.error(
             <div className=" font-thin text-sm">{res.data.message}</div>,

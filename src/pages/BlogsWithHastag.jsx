@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import UsePost from "../hooks/UsePost";
 import UseFetch from "../hooks/UseFetch";
 import RecentBlogCard from "../components/RecentBlogCard";
-import Loader from "../components/Loader";
+
 import { config } from "../config";
+import Loading from "../components/Loading";
 const BlogsWithHastag = () => {
   const { hastag } = useParams();
   console.log(hastag);
@@ -20,6 +21,7 @@ const BlogsWithHastag = () => {
           <div className=" text-blue-600">/{hastag}</div>
         </div>
         <div className=" grid  py-4 gap-8    lg:grid-cols-3 md:grid-cols-2 grid-cols-1  mt-10  justify-items-center md:justify-items-start">
+          {!data.data && <Loading />}
           {data?.data?.map((item, index) => {
             return <RecentBlogCard object={item} key={index} />;
           })}

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
 import Input from "../../components/input/Input";
 import { config } from "../../config";
-
+import { ToastContainer, toast } from "react-toastify";
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -102,8 +103,34 @@ const SignUp = () => {
           }
         );
         console.log(res.data);
+        if (res.data.success) {
+          navigate("/");
+        } else {
+          toast.error(
+            <div className=" font-thin text-sm">{res.data.message}</div>,
+            {
+              position: "top-right",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            }
+          );
+        }
       } catch (error) {
-        console.log(error);
+        toast.error(<div className=" font-thin text-sm">{error.message}</div>, {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     }
   };
@@ -171,6 +198,18 @@ const SignUp = () => {
           </button>
         </div>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

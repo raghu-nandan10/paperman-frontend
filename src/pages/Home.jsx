@@ -14,16 +14,16 @@ import { createContext } from "react";
 import { BlogToggleContext } from "../App";
 import TestCredentials from "../components/TestCredentials";
 import { config } from "../config";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const { setAddBlog, addBlog } = useContext(BlogToggleContext);
-  const [drop, setDrop] = useState(true);
   const [info, setInfo] = useState(true);
-  const [items, Setitems] = useState(0);
-
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleBlogSlide = async () => {
+    setLoading(true);
     if (!addBlog) {
       try {
         const res = await axios.post(
@@ -42,7 +42,7 @@ const Home = () => {
         console.log("heheheheheh");
         if (res.data.success) {
           navigate("/");
-          setAddBlog(false);
+          setAddBlog(true);
         } else {
           navigate("/login");
           setAddBlog(false);
@@ -54,11 +54,10 @@ const Home = () => {
         navigate("/login");
         setAddBlog(false);
       }
+      setLoading(false);
     }
   };
-  const handleDropDown = () => {
-    setDrop(!drop);
-  };
+
   const handleClose = () => {
     setInfo(false);
   };
@@ -70,6 +69,15 @@ const Home = () => {
       <BlogSearch />
       <RecentContent />
       <FloatingAddButton handleBlogSlide={handleBlogSlide} />
+      {loading && (
+        <div>
+          {/* <div className=" absolute gap-20 flx flex-col top-1/4 ml-10 m:ml-0 md:top-1/3 md:left-1/3 justify-center  md:text-3xl text-white">
+            <span className="text-white">Please alteast wait a minute...</span>
+          </div> */}
+          <Loading />
+        </div>
+      )}
+
       <AddBlogContainer addBlog={addBlog} setAddBlog={setAddBlog} />
 
       <div className="hidden  right-10 top-28 absolute lg:block">

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { TagInput } from "evergreen-ui";
 
 const TagSelector = ({ blogObject, setBlogObject }) => {
-  const [values, setValues] = React.useState(["CyberSecurity"]);
+  const [values, setValues] = React.useState([]);
 
   useEffect(() => {
     const updatedBlogObject = { ...blogObject };

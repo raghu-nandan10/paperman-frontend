@@ -1,11 +1,11 @@
 .reader-container {
-  width: 100%;
-  padding: 20px;
+  width: 90%;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  margin-left: 23px;
   overflow: hidden;
 }
 .code-header {

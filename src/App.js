@@ -4,10 +4,9 @@ import Login from "./pages/login/Login";
 import SignUp from "./pages/signup/SignUp";
 import Home from "./pages/Home";
 import Blogpage from "./pages/blog-page/Blogpage";
-import ProfilePage from "./pages/profile-page/ProfilePage";
 
 import "./App.css";
-import Navbar from "./components/Navbar";
+
 import "./App.css";
 import BlogsWithHastag from "./pages/BlogsWithHastag";
 import { useState, createContext } from "react";
@@ -23,7 +22,6 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/blog/:id" element={<Blogpage />} />
-            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/blog/hastag/:hastag" element={<BlogsWithHastag />} />
           </Routes>
         </BrowserRouter>

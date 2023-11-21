@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import HomeCard from "./HomeCard";
+import CircularProgress from "@mui/material/CircularProgress";
 import RecentBlogCard from "./RecentBlogCard";
 import { config } from "../config";
 import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
 import UseFetch from "../hooks/UseFetch";
-import Loader from "./Loader";
+import Backdrop from "@mui/material/Backdrop";
+import Loading from "./Loading";
+
 const RecentContent = () => {
   const { data, loading, error } = UseFetch(`${config.domain}/blog/all`);
   const scrollBar = useRef();
@@ -15,23 +17,7 @@ const RecentContent = () => {
     scrollBar.current.scrollLeft = scrollBar.current.scrollLeft - 340;
   };
 
-  // useEffect(() => {
-  //   let prevScrollValue = 0;
-  //   const scrollAmount = 335;
-  //   const interval = setInterval(() => {
-  //     const currentScrollAmount = scrollBar.current.scrollLeft + scrollAmount;
-  //     if (prevScrollValue === currentScrollAmount) {
-  //       scrollBar.current.scrollLeft = 0;
-  //     } else {
-  //       scrollBar.current.scrollLeft += scrollAmount;
-  //     }
-  //     prevScrollValue = currentScrollAmount;
-  //   }, 3000);
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
+  // Example usage
 
   return (
     <div className="w-[100%] flex flex-col gap-7 mt-10 justify-center items-center overflow-hidden  ">
@@ -44,9 +30,15 @@ const RecentContent = () => {
           ref={scrollBar}
           className="w-[100%] p-3    flex    gap-8  overflow-scroll scroll-smooth  scrollbar-hide  "
         >
+          {!data.data && (
+            <div className="flex flex-col top-1/2  absolute  text-white text-3xl w-[100vw] justify-center items-center">
+              <Loading />
+              <div>It may take a minute to spin up the backend server...</div>
+            </div>
+          )}
           {data.data?.map((item, index) => {
             return loading ? (
-              <Loader />
+              "loading"
             ) : (
               <RecentBlogCard object={item} key={index} />
             );

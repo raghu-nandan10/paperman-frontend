@@ -1,3 +1,4 @@
 export const config = {
-  domain: "http://localhost:4000",
+  domain: "https://paperman-backend-api.onrender.com",
+  // domain: "https://paperman-backend.vercel.app",
 };

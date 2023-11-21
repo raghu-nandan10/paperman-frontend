@@ -31,7 +31,7 @@ const BlogSearch = () => {
 
   return (
     <div className="flex mt-[30px] w-full relative flex-col justify-center items-center font-thin">
-      <div className="w-[60%] justify-center items-center  bg-zinc-900 text-2xl text-black  flex gap-1 min-w-[380px]   p-4">
+      <div className="w-[60%] justify-center items-center  bg-zinc-900 text-2xl text-black  flex gap-1 min-w-[320px]   p-4">
         <input
           placeholder="Search Blogs"
           onChange={handleSearchChange}
@@ -45,10 +45,15 @@ const BlogSearch = () => {
             onClick={() => {
               navigate("/blog/" + item._id);
             }}
-            className="w-[60%]   bg-zinc-900 text-2xl gap-2 cursor-pointer absolute top-14  flex  min-w-[380px] text-white  "
+            className="w-[60%]   bg-zinc-900 text-2xl gap-2 cursor-pointer absolute top-14 p-2 flex  min-w-[380px] text-white  "
           >
             <div className="w-[50px] h-[50px] flx ml-4">
-              <img src={item.thumbnail} />
+              <img
+                src={
+                  item.thumbnail ||
+                  "https://dpcpa.com/app/uploads/2015/01/thumbnail-default.jpg"
+                }
+              />
             </div>
             <div className="flx">
               <span className=" flx text-lg">{item.title}</span>

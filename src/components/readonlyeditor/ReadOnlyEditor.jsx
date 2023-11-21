@@ -46,7 +46,7 @@ const ReadOnlyEditor = ({ code, language }) => {
           style={atomOneDark}
           customStyle={{
             width: "100%",
-            padding: "15px",
+            padding: "10px",
             fontSize: "15px",
           }}
           wrapLines={true}
